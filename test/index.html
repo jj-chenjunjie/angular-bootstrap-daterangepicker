@@ -2,8 +2,20 @@
 <html>
 <head>
 	<title>Angular Bootstrap Daterangepicker</title>
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css"/>
 </head>
-<body>
-
+<body ng-app>
+	<input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
 </body>
+<script src="../bower_components/jquery/dist/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../bower_components/moment/min/moment-with-locales.js" type="text/javascript" charset="utf-8"></script>
+<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../bower_components/angular/angular.js" type="text/javascript" charset="utf-8"></script>
+<script src="../src/angular-bootstrap-daterangepicker.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+	    $('input[name="daterange"]').daterangepicker();
+	});
+</script>
 </html>
