@@ -29,7 +29,6 @@
 			link: function($scope, iElm, iAttrs, controller) {
 				/*var options = angular.copy({}, daterangepickerOptions);
 				angular.extend(options, $scope.options)*/
-				console.log(daterangepickerOptions);
 				angular.extend(daterangepickerOptions, $scope.options)
 				iElm.daterangepicker(daterangepickerOptions);
 				
