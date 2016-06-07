@@ -12,8 +12,13 @@
 		<hr />
 		<div ng-controller="MyController">
 			<p>{{daterange}}</p>
-			<input daterangepicker type="text" class="form-control" />
-			<input daterangepicker="options" type="text" class="form-control"  />
+			
+			<hr />
+			<input daterangepicker="options" type="text" class="form-control" ng-model="date"/>
+			{{date}}
+			<hr />
+			<input daterangepicker="rangeOptions" type="text" class="form-control" start="start" end="end"/>
+			{{dateRange}} {{start}} {{end}}
 		</div>
 	</body>
 	<script src="../bower_components/jquery/dist/jquery.js" type="text/javascript" charset="utf-8"></script>
@@ -21,21 +26,25 @@
 	<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript" charset="utf-8"></script>
 
 	<script src="../bower_components/angular/angular.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../src/angular-bootstrap-daterangepicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../angular-bootstrap-daterangepicker.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('input[name="daterange"]').daterangepicker();
 			// angular
 			angular.module('myApp', ['daterangepicker'])
-/*			.config(function(daterangepickerOptions){
-				daterangepickerOptions.singleDatePicker = true;
-			})*/
-			.controller('MyController', ['$scope', function($scope) {
-				$scope.greetMe = 'World';
+			.config(function(daterangepickerProvider){
+				daterangepickerProvider.setOptions({
+					locale: {
+						format: "YYYY-MM-DD",
+						separator: ' ~ '
+					}
+				});
+			})
+			.controller('MyController', function($scope) {
 		        $scope.options = {
 		        	singleDatePicker: true
-		        }
-			}]);
+		        };
+			});
 			angular.element(document).ready(function() {
 				angular.bootstrap(document, ['myApp']);
 			});
